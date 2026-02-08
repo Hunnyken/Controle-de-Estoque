@@ -1,0 +1,93 @@
+object DM: TDM
+  Height = 483
+  Width = 667
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'Database=estoque'
+      'User_Name=root'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 40
+    Top = 48
+  end
+  object tbProdutos: TFDTable
+    Active = True
+    IndexFieldNames = 'id_produto'
+    Connection = Conexao
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    TableName = 'estoque.produto'
+    Left = 104
+    Top = 48
+  end
+  object dsProdutos: TDataSource
+    DataSet = tbProdutos
+    Left = 104
+    Top = 112
+  end
+  object tbMovimentacao: TFDTable
+    Active = True
+    IndexFieldNames = 'id_movimentacao'
+    Connection = Conexao
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    TableName = 'estoque.movimentacao'
+    Left = 176
+    Top = 48
+  end
+  object dsMovimentacao: TDataSource
+    DataSet = tbMovimentacao
+    Left = 192
+    Top = 112
+  end
+  object tbMovProdutos: TFDTable
+    Active = True
+    IndexFieldNames = 'id_prod_mov'
+    Connection = Conexao
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    TableName = 'estoque.movimentacao_produto'
+    Left = 272
+    Top = 48
+  end
+  object dsMovProduto: TDataSource
+    DataSet = tbMovProdutos
+    Left = 288
+    Top = 112
+  end
+  object sqlAumentaEstoque: TFDCommand
+    Connection = Conexao
+    ParamData = <
+      item
+        Name = 'pId'
+      end
+      item
+        Name = 'pQtd'
+      end>
+    Left = 32
+    Top = 200
+  end
+  object sqlDiminuiEstoque: TFDCommand
+    Connection = Conexao
+    ParamData = <
+      item
+        Name = 'pId'
+      end
+      item
+        Name = 'pQtd'
+      end>
+    Left = 32
+    Top = 256
+  end
+  object sqlMovimentacoes: TFDQuery
+    Active = True
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT *FROM movimentacao')
+    Left = 144
+    Top = 200
+  end
+  object dsSqlMovimentacoes: TDataSource
+    DataSet = sqlMovimentacoes
+    Left = 144
+    Top = 264
+  end
+end
