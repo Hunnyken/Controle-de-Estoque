@@ -4,7 +4,7 @@ object formCadMovimentacao: TformCadMovimentacao
   BorderStyle = bsSingle
   Caption = 'Cadastro de Movimenta'#231#227'o'
   ClientHeight = 601
-  ClientWidth = 952
+  ClientWidth = 1299
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,6 +12,7 @@ object formCadMovimentacao: TformCadMovimentacao
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 15
   object Label1: TLabel
     Left = 32
@@ -76,6 +77,71 @@ object formCadMovimentacao: TformCadMovimentacao
     Font.Height = -16
     Font.Name = 'Tahoma'
     Font.Style = []
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 853
+    Top = 150
+    Width = 260
+    Height = 23
+    Caption = 'Produtos da Movimenta'#231#227'o'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 853
+    Top = 190
+    Width = 59
+    Height = 18
+    Caption = 'Produto'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Quantidade: TLabel
+    Left = 1184
+    Top = 190
+    Width = 86
+    Height = 18
+    Caption = 'Quantidade'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 853
+    Top = 520
+    Width = 152
+    Height = 19
+    Caption = 'Total de Produtos:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object txtTotalProdutos: TLabel
+    Left = 1011
+    Top = 521
+    Width = 20
+    Height = 18
+    Caption = '00'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object DBComboBox1: TDBComboBox
@@ -153,8 +219,8 @@ object formCadMovimentacao: TformCadMovimentacao
     OnClick = DBNavigator1Click
   end
   object DBGrid1: TDBGrid
-    Left = 488
-    Top = 192
+    Left = 403
+    Top = 216
     Width = 385
     Height = 361
     DataSource = DM.dsMovimentacao
@@ -198,5 +264,165 @@ object formCadMovimentacao: TformCadMovimentacao
         Title.Font.Style = [fsBold]
         Visible = True
       end>
+  end
+  object btInserir: TButton
+    Left = 424
+    Top = 73
+    Width = 75
+    Height = 46
+    Caption = 'Inserir'
+    TabOrder = 6
+    OnClick = btInserirClick
+  end
+  object btDeletar: TButton
+    Left = 512
+    Top = 72
+    Width = 75
+    Height = 48
+    Caption = 'Deletar'
+    TabOrder = 7
+    OnClick = btDeletarClick
+  end
+  object btSalvar: TButton
+    Left = 600
+    Top = 73
+    Width = 75
+    Height = 46
+    Caption = 'Salvar'
+    Enabled = False
+    TabOrder = 8
+    OnClick = btSalvarClick
+  end
+  object btCancelar: TButton
+    Left = 681
+    Top = 73
+    Width = 75
+    Height = 46
+    Caption = 'Cancelar'
+    Enabled = False
+    TabOrder = 9
+    OnClick = btCancelarClick
+  end
+  object Button5: TButton
+    Left = 512
+    Top = 126
+    Width = 75
+    Height = 46
+    Caption = '<'
+    TabOrder = 10
+    OnClick = Button5Click
+  end
+  object Button6: TButton
+    Left = 600
+    Top = 125
+    Width = 75
+    Height = 46
+    Caption = '>'
+    TabOrder = 11
+    OnClick = Button6Click
+  end
+  object Button7: TButton
+    Left = 686
+    Top = 125
+    Width = 75
+    Height = 46
+    Caption = '>>'
+    TabOrder = 12
+    OnClick = Button7Click
+  end
+  object Button8: TButton
+    Left = 424
+    Top = 125
+    Width = 75
+    Height = 46
+    Caption = '<<'
+    TabOrder = 13
+    OnClick = Button8Click
+  end
+  object btAbrir: TButton
+    Left = 456
+    Top = 16
+    Width = 107
+    Height = 33
+    Caption = 'Abrir Tabela'
+    TabOrder = 14
+    OnClick = btAbrirClick
+  end
+  object btFechar: TButton
+    Left = 632
+    Top = 16
+    Width = 105
+    Height = 33
+    Caption = 'Fechar Tabela'
+    TabOrder = 15
+    OnClick = btFecharClick
+  end
+  object DBNavigator2: TDBNavigator
+    Left = 1139
+    Top = 142
+    Width = 152
+    Height = 31
+    DataSource = DM.dsMovProduto
+    VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
+    TabOrder = 16
+  end
+  object DBGrid2: TDBGrid
+    Left = 853
+    Top = 249
+    Width = 420
+    Height = 234
+    DataSource = DM.dsMovProduto
+    TabOrder = 17
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'nomeProduto'
+        Title.Caption = 'DESCRI'#199#195'O'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Segoe UI'
+        Title.Font.Style = [fsBold]
+        Width = 298
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'qtd'
+        Title.Caption = 'QUANTIDADE'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Segoe UI'
+        Title.Font.Style = [fsBold]
+        Width = 86
+        Visible = True
+      end>
+  end
+  object DBEdit3: TDBEdit
+    Left = 1184
+    Top = 218
+    Width = 86
+    Height = 23
+    DataField = 'qtd'
+    DataSource = DM.dsMovProduto
+    TabOrder = 18
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 853
+    Top = 216
+    Width = 316
+    Height = 23
+    DataField = 'id_produto'
+    DataSource = DM.dsMovProduto
+    KeyField = 'id'
+    ListField = 'nome'
+    ListSource = DM.dsProdutos
+    TabOrder = 19
   end
 end

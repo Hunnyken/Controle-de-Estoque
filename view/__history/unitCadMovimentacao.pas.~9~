@@ -1,0 +1,70 @@
+unit unitCadMovimentacao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask,
+  Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons;
+
+type
+  TformCadMovimentacao = class(TForm)
+    Label1: TLabel;
+    DBComboBox1: TDBComboBox;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBMemo1: TDBMemo;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    DBNavigator1: TDBNavigator;
+    DBGrid1: TDBGrid;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    btAbrir: TButton;
+    btFechar: TButton;
+    procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
+    procedure btAbrirClick(Sender: TObject);
+    procedure btFecharClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formCadMovimentacao: TformCadMovimentacao;
+
+implementation
+
+{$R *.dfm}
+
+uses unitDM;
+
+procedure TformCadMovimentacao.btFecharClick(Sender: TObject);
+begin
+  DM.tbMovimentacao.Close;
+end;
+
+procedure TformCadMovimentacao.btAbrirClick(Sender: TObject);
+begin
+  DM.tbMovimentacao.Open;
+end;
+
+procedure TformCadMovimentacao.DBNavigator1Click(Sender: TObject;
+  Button: TNavigateBtn);
+begin
+  if Button = nbInsert then
+    begin
+      DM.tbMovimentacaodataHora.Value := Now;
+    end;
+end;
+
+end.
