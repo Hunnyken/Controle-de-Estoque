@@ -87,6 +87,7 @@ end;
 procedure TDM.tbMovProdutosAfterPost(DataSet: TDataSet);
 begin
   CalcularTotais;
+
   if (tbMovimentacao.FieldByName('tipo').Value  = 'Entrada de Estoque')  then
     begin
       sqlAumentaEstoque.ParamByName('pId').Value := tbMovProdutos.FieldByName('id_produto').Value;
@@ -104,19 +105,20 @@ end;
 
 procedure TDM.tbMovProdutosBeforeDelete(DataSet: TDataSet);
 begin
-  if (tbMovimentacao.FieldByName('tipo').Value  = 'Entrada de Estoque')  then
-  begin
-    sqlDiminuiEstoque.ParamByName('pId').Value := tbMovProdutos.FieldByName('id_produto').Value;
-    sqlDiminuiEstoque.ParamByName('pQtd').Value := tbMovProdutos.FieldByName('qtd').Value;
-    sqlDiminuiEstoque.Execute;
-  end;
 
-if (tbMovimentacao.FieldByName('tipo').Value  = 'Saída de Estoque')  then
-  begin
-    sqlAumentaEstoque.ParamByName('pId').Value := tbMovProdutos.FieldByName('id_produto').Value;
-    sqlAumentaEstoque.ParamByName('pQtd').Value := tbMovProdutos.FieldByName('qtd').Value;
-    sqlAumentaEstoque.Execute;
-  end;
+  if (tbMovimentacao.FieldByName('tipo').Value  = 'Entrada de Estoque')  then
+    begin
+      sqlDiminuiEstoque.ParamByName('pId').Value := tbMovProdutos.FieldByName('id_produto').Value;
+      sqlDiminuiEstoque.ParamByName('pQtd').Value := tbMovProdutos.FieldByName('qtd').Value;
+      sqlDiminuiEstoque.Execute;
+    end;
+
+  if (tbMovimentacao.FieldByName('tipo').Value  = 'Saída de Estoque')  then
+    begin
+      sqlAumentaEstoque.ParamByName('pId').Value := tbMovProdutos.FieldByName('id_produto').Value;
+      sqlAumentaEstoque.ParamByName('pQtd').Value := tbMovProdutos.FieldByName('qtd').Value;
+      sqlAumentaEstoque.Execute;
+    end;
 end;
 
 end.

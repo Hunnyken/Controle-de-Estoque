@@ -147,8 +147,8 @@ object DM: TDM
     Connection = Conexao
     CommandText.Strings = (
       
-        'UPDATE produto SET estoque_atual = estoque_atual + :pQtd where i' +
-        'd = :pId')
+        'UPDATE produto SET estoque_atual = estoque_atual + :pQtd WHERE  ' +
+        'id = :pId')
     ParamData = <
       item
         Name = 'pQtd'

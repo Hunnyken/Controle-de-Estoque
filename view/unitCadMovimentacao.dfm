@@ -362,7 +362,7 @@ object formCadMovimentacao: TformCadMovimentacao
     Top = 142
     Width = 152
     Height = 31
-    DataSource = DM.dsMovProduto
+    DataSource = DM.dsMovProdutos
     VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
     TabOrder = 16
   end
@@ -371,7 +371,7 @@ object formCadMovimentacao: TformCadMovimentacao
     Top = 249
     Width = 420
     Height = 234
-    DataSource = DM.dsMovProduto
+    DataSource = DM.dsMovProdutos
     TabOrder = 17
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -400,17 +400,17 @@ object formCadMovimentacao: TformCadMovimentacao
         Title.Font.Height = -12
         Title.Font.Name = 'Segoe UI'
         Title.Font.Style = [fsBold]
-        Width = 86
+        Width = 103
         Visible = True
       end>
   end
   object DBEdit3: TDBEdit
-    Left = 1184
-    Top = 218
+    Left = 1175
+    Top = 220
     Width = 86
     Height = 23
     DataField = 'qtd'
-    DataSource = DM.dsMovProduto
+    DataSource = DM.dsMovProdutos
     TabOrder = 18
   end
   object DBLookupComboBox1: TDBLookupComboBox
@@ -419,7 +419,7 @@ object formCadMovimentacao: TformCadMovimentacao
     Width = 316
     Height = 23
     DataField = 'id_produto'
-    DataSource = DM.dsMovProduto
+    DataSource = DM.dsMovProdutos
     KeyField = 'id'
     ListField = 'nome'
     ListSource = DM.dsProdutos

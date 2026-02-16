@@ -145,7 +145,7 @@ object formCadProduto: TformCadProduto
   object editQuantidade: TDBEdit
     Left = 40
     Top = 248
-    Width = 166
+    Width = 164
     Height = 27
     DataField = 'estoque_atual'
     DataSource = DM.dsProdutos
