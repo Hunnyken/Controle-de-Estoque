@@ -55,6 +55,7 @@ object DM: TDM
   end
   object tbMovimentacao: TFDTable
     Active = True
+    BeforeDelete = tbMovimentacaoBeforeDelete
     IndexFieldNames = 'id'
     Connection = Conexao
     ResourceOptions.AssignedValues = [rvEscapeExpand]

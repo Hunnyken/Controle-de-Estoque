@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Data.DB,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet, Vcl.Dialogs, Vcl.StdCtrls,Winapi.Messages,System.Variants, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms;
 
 type
   TDM = class(TDataModule)
@@ -42,6 +43,7 @@ type
     procedure tbMovProdutosAfterDelete(DataSet: TDataSet);
     procedure CalcularTotais;
     procedure tbMovProdutosBeforeDelete(DataSet: TDataSet);
+    procedure tbMovimentacaoBeforeDelete(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -77,6 +79,17 @@ begin
 
         formCadMovimentacao.txtTotalProdutos.Caption := IntToStr(totais);
     end;
+end;
+
+procedure TDM.tbMovimentacaoBeforeDelete(DataSet: TDataSet);
+begin
+   if tbMovProdutos.RecordCount > 0 then
+     begin
+      Application.MessageBox('Existem produtos cadastrados ness movimentação. Exclua-os primeiro.','ATENÇÃO!');
+      abort;
+
+     end;
+
 end;
 
 procedure TDM.tbMovProdutosAfterDelete(DataSet: TDataSet);
