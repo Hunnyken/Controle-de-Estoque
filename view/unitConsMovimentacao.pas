@@ -10,14 +10,18 @@ uses
 type
   TformConsMovimentacao = class(TForm)
     Label1: TLabel;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
+    lblTotal: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    txtDataInicial: TMaskEdit;
+    txtDataFinal: TMaskEdit;
+    btConsultar: TButton;
+    procedure btConsultarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,5 +36,17 @@ implementation
 {$R *.dfm}
 
 uses unitDM;
+
+procedure TformConsMovimentacao.btConsultarClick(Sender: TObject);
+begin
+  DM.sqlMovimentacoes.Close;
+  DM.sqlMovimentacoes.SQL.Clear;
+  DM.sqlMovimentacoes.SQL.Text := 'SELECT *FROM movimentaacoes WHERE DATE(dataHora) BETWEEN :pDataInicial and :pDataFinal';
+  DM.sqlMovimentacoes.ParamByName('pDataInicial').Value := FormatDateTime('yyyy-mm-dd',StrToDate(txtDataInicial.Text));
+  DM.sqlMovimentacoes.ParamByName('pDataFinal').Value := FormatDateTime('yyyy-mm-dd',StrToDate(txtDataFinal.Text));
+  DM.sqlMovimentacoes.Open;
+
+  lblTotal.Caption := IntToStr(DM.sqlMovimentacoes.RecordCount);
+end;
 
 end.

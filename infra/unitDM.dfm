@@ -187,10 +187,64 @@ object DM: TDM
       'SELECT *FROM movimentacoes')
     Left = 160
     Top = 200
+    ParamData = <
+      item
+        Name = 'pDataInicial'
+      end
+      item
+        Name = 'pDataFinal'
+      end>
   end
   object dsSqlMovimentacoes: TDataSource
     DataSet = sqlMovimentacoes
     Left = 160
+    Top = 264
+  end
+  object sqlMovProdutos: TFDQuery
+    Active = True
+    IndexFieldNames = 'id_movimentacao'
+    MasterSource = dsSqlMovimentacoes
+    MasterFields = 'id'
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT *FROM movimentacoes_produtos')
+    Left = 280
+    Top = 200
+    object sqlMovProdutosid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+    end
+    object sqlMovProdutosid_movimentacao: TIntegerField
+      FieldName = 'id_movimentacao'
+      Origin = 'id_movimentacao'
+      Required = True
+    end
+    object sqlMovProdutosid_produto: TIntegerField
+      FieldName = 'id_produto'
+      Origin = 'id_produto'
+      Required = True
+    end
+    object sqlMovProdutosqtd: TIntegerField
+      FieldName = 'qtd'
+      Origin = 'qtd'
+      Required = True
+    end
+    object sqlMovProdutosnomeProduto: TStringField
+      FieldKind = fkLookup
+      FieldName = 'nomeProduto'
+      LookupDataSet = tbProdutos
+      LookupKeyFields = 'id'
+      LookupResultField = 'nome'
+      KeyFields = 'id_produto'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object dsSqlMovProdutos: TDataSource
+    DataSet = sqlMovProdutos
+    Left = 280
     Top = 264
   end
 end
