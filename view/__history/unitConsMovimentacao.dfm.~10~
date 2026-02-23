@@ -11,7 +11,6 @@ object formConsMovimentacao: TformConsMovimentacao
   Font.Name = 'Segoe UI'
   Font.Style = [fsBold]
   Position = poScreenCenter
-  OnShow = FormShow
   TextHeight = 17
   object Label4: TLabel
     Left = 32
@@ -49,7 +48,6 @@ object formConsMovimentacao: TformConsMovimentacao
       item
         Expanded = False
         FieldName = 'tipo'
-        ReadOnly = True
         Title.Caption = 'TIPO'
         Width = 126
         Visible = True

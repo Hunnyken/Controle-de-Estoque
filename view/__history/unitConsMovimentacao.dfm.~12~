@@ -57,6 +57,7 @@ object formConsMovimentacao: TformConsMovimentacao
       item
         Expanded = False
         FieldName = 'dataHora'
+        ReadOnly = True
         Title.Caption = 'DATA / HORA'
         Width = 126
         Visible = True
@@ -64,6 +65,7 @@ object formConsMovimentacao: TformConsMovimentacao
       item
         Expanded = False
         FieldName = 'responsavel'
+        ReadOnly = True
         Title.Caption = 'RESPONS'#193'VEL'
         Visible = True
       end>

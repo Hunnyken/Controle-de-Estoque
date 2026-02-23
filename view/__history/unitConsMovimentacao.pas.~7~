@@ -22,7 +22,6 @@ type
     txtDataFinal: TMaskEdit;
     btConsultar: TButton;
     procedure btConsultarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,13 +46,6 @@ begin
   DM.sqlMovimentacoes.ParamByName('pDataFinal').Value := FormatDateTime('yyyy-mm-dd',StrToDate(txtDataFinal.Text));
   DM.sqlMovimentacoes.Open;
 
-  lblTotal.Caption := IntToStr(DM.sqlMovimentacoes.RecordCount);
-end;
-
-procedure TformConsMovimentacao.FormShow(Sender: TObject);
-begin
-  DM.sqlMovimentacoes.Refresh;
-  DM.sqlMovProdutos.Refresh;
   lblTotal.Caption := IntToStr(DM.sqlMovimentacoes.RecordCount);
 end;
 

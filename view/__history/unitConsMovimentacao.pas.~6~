@@ -22,7 +22,6 @@ type
     txtDataFinal: TMaskEdit;
     btConsultar: TButton;
     procedure btConsultarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,18 +41,11 @@ procedure TformConsMovimentacao.btConsultarClick(Sender: TObject);
 begin
   DM.sqlMovimentacoes.Close;
   DM.sqlMovimentacoes.SQL.Clear;
-  DM.sqlMovimentacoes.SQL.Text := 'SELECT *FROM movimentacoes WHERE DATE(dataHora) BETWEEN :pDataInicial and :pDataFinal';
+  DM.sqlMovimentacoes.SQL.Text := 'SELECT *FROM movimentaacoes WHERE DATE(dataHora) BETWEEN :pDataInicial and :pDataFinal';
   DM.sqlMovimentacoes.ParamByName('pDataInicial').Value := FormatDateTime('yyyy-mm-dd',StrToDate(txtDataInicial.Text));
   DM.sqlMovimentacoes.ParamByName('pDataFinal').Value := FormatDateTime('yyyy-mm-dd',StrToDate(txtDataFinal.Text));
   DM.sqlMovimentacoes.Open;
 
-  lblTotal.Caption := IntToStr(DM.sqlMovimentacoes.RecordCount);
-end;
-
-procedure TformConsMovimentacao.FormShow(Sender: TObject);
-begin
-  DM.sqlMovimentacoes.Refresh;
-  DM.sqlMovProdutos.Refresh;
   lblTotal.Caption := IntToStr(DM.sqlMovimentacoes.RecordCount);
 end;
 

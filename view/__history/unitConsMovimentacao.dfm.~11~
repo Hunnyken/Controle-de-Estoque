@@ -49,7 +49,6 @@ object formConsMovimentacao: TformConsMovimentacao
       item
         Expanded = False
         FieldName = 'tipo'
-        ReadOnly = True
         Title.Caption = 'TIPO'
         Width = 126
         Visible = True

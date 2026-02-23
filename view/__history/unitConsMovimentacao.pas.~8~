@@ -54,7 +54,6 @@ procedure TformConsMovimentacao.FormShow(Sender: TObject);
 begin
   DM.sqlMovimentacoes.Refresh;
   DM.sqlMovProdutos.Refresh;
-  lblTotal.Caption := IntToStr(DM.sqlMovimentacoes.RecordCount);
 end;
 
 end.
