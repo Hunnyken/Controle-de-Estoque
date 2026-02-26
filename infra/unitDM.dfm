@@ -190,9 +190,11 @@ object DM: TDM
     ParamData = <
       item
         Name = 'pDataInicial'
+        ParamType = ptInput
       end
       item
         Name = 'pDataFinal'
+        ParamType = ptInput
       end>
   end
   object dsSqlMovimentacoes: TDataSource

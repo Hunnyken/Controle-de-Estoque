@@ -1,6 +1,7 @@
 object formConsMovimentacao: TformConsMovimentacao
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
   Caption = 'Consulta de Movimenta'#231#245'es'
   ClientHeight = 591
   ClientWidth = 830

@@ -92,7 +92,7 @@ procedure TDM.tbMovimentacaoBeforeDelete(DataSet: TDataSet);
 begin
    if tbMovProdutos.RecordCount > 0 then
      begin
-      Application.MessageBox('Existem produtos cadastrados ness movimentação. Exclua-os primeiro.','ATENÇÃO!');
+      Application.MessageBox('Existem produtos cadastrados nessa movimentação. Exclua-os primeiro.','ATENÇÃO!');
       abort;
 
      end;

@@ -26,6 +26,7 @@ type
     Label9: TLabel;
     procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
     procedure FormShow(Sender: TObject);
+    procedure Calcular;
   private
     { Private declarations }
   public
@@ -40,26 +41,10 @@ implementation
 {$R *.dfm}
 
 uses unitDM;
-
-procedure TformCadProduto.DBNavigator1Click(Sender: TObject;
-  Button: TNavigateBtn);
-begin
-  if Button = nbPost then
-    begin
-     Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
-    end;
-  if Button = nbDelete then
-    begin
-      Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
-    end;
-end;
-
-procedure TformCadProduto.FormShow(Sender: TObject);
+procedure TformCadProduto.Calcular;
 var
   totalEstoque : Integer;
 begin
-  Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
-
   DM.tbProdutos.First;
 
   while not DM.tbProdutos.Eof do
@@ -67,5 +52,30 @@ begin
       totalEstoque := totalEstoque + DM.tbProdutosestoque_atual.Value;
       DM.tbProdutos.Next;
     end;
+  Label9.caption := IntToStr(DM.tbProdutos.RecordCount);
+end;
+
+procedure TformCadProduto.DBNavigator1Click(Sender: TObject;
+  Button: TNavigateBtn);
+begin
+  if Button = nbPost then
+    begin
+     Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
+     Calcular;
+     Application.MessageBox('Registro incluído com sucesso!', 'ATENÇÃO', MB_ICONINFORMATION+MB_OK);
+    end;
+  if Button = nbDelete then
+    begin
+      Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
+      calcular;
+      ShowMessage('Registro deletado com sucesso!');
+    end;
+end;
+
+procedure TformCadProduto.FormShow(Sender: TObject);
+
+begin
+  Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
+  Calcular;
 end;
 end.

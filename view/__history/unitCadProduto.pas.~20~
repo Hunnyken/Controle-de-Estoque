@@ -69,7 +69,6 @@ begin
       Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
       calcular;
       ShowMessage('Registro deletado com sucesso!');
-
     end;
 end;
 
