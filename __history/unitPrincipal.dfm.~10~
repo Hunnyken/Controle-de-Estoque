@@ -17,14 +17,15 @@ object formPrincipal: TformPrincipal
     Left = 0
     Top = 0
     Width = 986
-    Height = 89
+    Height = 81
     Align = alTop
+    Caption = 'Panel1'
     TabOrder = 0
     object BitBtn1: TBitBtn
       Left = 910
       Top = 1
       Width = 75
-      Height = 87
+      Height = 79
       Align = alRight
       Caption = 'Encerrar'
       Font.Charset = DEFAULT_CHARSET
@@ -335,7 +336,7 @@ object formPrincipal: TformPrincipal
       Left = 151
       Top = 1
       Width = 75
-      Height = 87
+      Height = 79
       Align = alLeft
       Caption = 'Consulta'
       Font.Charset = DEFAULT_CHARSET
@@ -597,7 +598,7 @@ object formPrincipal: TformPrincipal
       Left = 76
       Top = 1
       Width = 75
-      Height = 87
+      Height = 79
       Align = alLeft
       Caption = 'Estoque'
       Font.Charset = DEFAULT_CHARSET
@@ -908,7 +909,7 @@ object formPrincipal: TformPrincipal
       Left = 1
       Top = 1
       Width = 75
-      Height = 87
+      Height = 79
       Align = alLeft
       Caption = 'Produto'
       Font.Charset = DEFAULT_CHARSET
