@@ -51,6 +51,7 @@ type
     procedure CalcularTotais;
     procedure tbMovProdutosBeforeDelete(DataSet: TDataSet);
     procedure tbMovimentacaoBeforeDelete(DataSet: TDataSet);
+    procedure tbMovimentacaoAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -70,22 +71,38 @@ uses unitCadMovimentacao;
 
 procedure TDM.CalcularTotais;
 var
-  totais : Integer;
+  totais: Integer;
+  Bookmark: TBookmark;
 begin
-
   if tbMovProdutos.State in [dsBrowse] then
-    begin
-      totais := 0;
+  begin
+    totais := 0;
+
+    Bookmark := tbMovProdutos.GetBookmark;  // salva posição atual
+
+    try
+      tbMovProdutos.DisableControls;        // evita piscadas na tela
       tbMovProdutos.First;
 
       while not tbMovProdutos.Eof do
-        begin
-          totais := totais + tbMovProdutos.FieldByName('qtd').Value;
-          tbMovProdutos.Next;
-        end;
+      begin
+        totais := totais + tbMovProdutos.FieldByName('qtd').AsInteger;
+        tbMovProdutos.Next;
+      end;
 
-        formCadMovimentacao.txtTotalProdutos.Caption := IntToStr(totais);
+    finally
+      tbMovProdutos.GotoBookmark(Bookmark); // volta para posição original
+      tbMovProdutos.FreeBookmark(Bookmark);
+      tbMovProdutos.EnableControls;         // reativa controles
     end;
+
+    formCadMovimentacao.txtTotalProdutos.Caption := IntToStr(totais);
+  end;
+end;
+
+procedure TDM.tbMovimentacaoAfterScroll(DataSet: TDataSet);
+begin
+  CalcularTotais;
 end;
 
 procedure TDM.tbMovimentacaoBeforeDelete(DataSet: TDataSet);
@@ -94,9 +111,7 @@ begin
      begin
       Application.MessageBox('Existem produtos cadastrados nessa movimentação. Exclua-os primeiro.','ATENÇÃO!');
       abort;
-
      end;
-
 end;
 
 procedure TDM.tbMovProdutosAfterDelete(DataSet: TDataSet);

@@ -78,5 +78,6 @@ procedure TformCadProduto.FormShow(Sender: TObject);
 begin
   Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
   Calcular;
+  DM.tbProdutos.Refresh;
 end;
 end.

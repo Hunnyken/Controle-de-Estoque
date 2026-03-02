@@ -62,11 +62,14 @@ begin
     begin
      Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
      Calcular;
+     Application.MessageBox('Produto incluído com sucesso!', 'ATENÇÃO', MB_ICONINFORMATION+MB_OK);
     end;
   if Button = nbDelete then
     begin
       Label7.Caption := IntToStr(DM.tbProdutos.RecordCount);
       calcular;
+      ShowMessage('Registro deletado com sucesso!');
+
     end;
 end;
 

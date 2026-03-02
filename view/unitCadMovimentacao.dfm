@@ -401,7 +401,7 @@ object formCadMovimentacao: TformCadMovimentacao
         Title.Font.Height = -12
         Title.Font.Name = 'Segoe UI'
         Title.Font.Style = [fsBold]
-        Width = 103
+        Width = 88
         Visible = True
       end>
   end

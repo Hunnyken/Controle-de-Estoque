@@ -54,8 +54,8 @@ object DM: TDM
     Top = 112
   end
   object tbMovimentacao: TFDTable
-    Active = True
     BeforeDelete = tbMovimentacaoBeforeDelete
+    AfterScroll = tbMovimentacaoAfterScroll
     IndexFieldNames = 'id'
     Connection = Conexao
     ResourceOptions.AssignedValues = [rvEscapeExpand]
