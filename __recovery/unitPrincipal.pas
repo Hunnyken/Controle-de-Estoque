@@ -1,0 +1,75 @@
+unit unitPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, unitCadProduto, unitCadMovimentacao,
+  unitConsMovimentacao, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Buttons;
+
+type
+  TformPrincipal = class(TForm)
+    MainMenu1: TMainMenu;
+    Sistema1: TMenuItem;
+    Sair1: TMenuItem;
+    Cadastros1: TMenuItem;
+    CadastrodeProdutos1: TMenuItem;
+    Movimentaes1: TMenuItem;
+    GerenciarMovimentaes1: TMenuItem;
+    ConsultarMovimentao1: TMenuItem;
+    Panel1: TPanel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    procedure Sair1Click(Sender: TObject);
+    procedure CadastrodeProdutos1Click(Sender: TObject);
+    procedure GerenciarMovimentaes1Click(Sender: TObject);
+    procedure ConsultarMovimentao1Click(Sender: TObject);
+    procedure BitBtn4Click(Sender: TObject);
+  private
+  procedure AbreTelaProduto;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formPrincipal: TformPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormPrincipal.AbreTelaProduto;
+begin
+  Application.CreateForm(TFormCadProduto, FormCadProduto);
+  try
+    formCadProduto.ShowModal;
+  finally
+    Freeandnil(FormCadProduto);
+  end;
+end;
+
+procedure TformPrincipal.BitBtn4Click(Sender: TObject);
+begin
+  AbreTelaProduto;
+end;
+
+procedure TformPrincipal.ConsultarMovimentao1Click(Sender: TObject);
+begin
+  formConsMovimentacao.ShowModal;
+end;
+
+procedure TformPrincipal.GerenciarMovimentaes1Click(Sender: TObject);
+begin
+  formCadMovimentacao.ShowModal;
+end;
+
+procedure TformPrincipal.Sair1Click(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+end.

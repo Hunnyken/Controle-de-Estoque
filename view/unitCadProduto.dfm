@@ -80,58 +80,6 @@ object formCadProduto: TformCadProduto
     Font.Style = []
     ParentFont = False
   end
-  object Label6: TLabel
-    Left = 536
-    Top = 471
-    Width = 126
-    Height = 19
-    Caption = 'Total de Produtos'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label7: TLabel
-    Left = 668
-    Top = 471
-    Width = 18
-    Height = 19
-    Caption = '00'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label8: TLabel
-    Left = 536
-    Top = 496
-    Width = 119
-    Height = 19
-    Caption = 'Total de Estoque'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label9: TLabel
-    Left = 668
-    Top = 496
-    Width = 18
-    Height = 19
-    Caption = '00'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
   object DBNavigator1: TDBNavigator
     Left = 512
     Top = 24
